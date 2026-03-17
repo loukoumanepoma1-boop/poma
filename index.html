@@ -49,9 +49,10 @@
             padding: 30px 20px;
             text-align: center;
             border-bottom: 2px solid #ff6b00;
+            position: relative;
         }
 
-        /* ===== PHOTO DE PROFIL DANS LA SIDEBAR ===== */
+        /* ===== PHOTO DE PROFIL PROTÉGÉE ===== */
         .profile-img-container {
             position: relative;
             width: 120px;
@@ -73,18 +74,28 @@
             filter: brightness(0.7);
         }
 
-        .profile-img-container:hover::after {
-            content: '\f030';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
+        .lock-icon {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 5px;
+            right: 5px;
+            background: #ff6b00;
             color: white;
-            font-size: 2rem;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border: 2px solid white;
+            opacity: 0;
+            transition: 0.3s;
             pointer-events: none;
+        }
+
+        .profile-img-container:hover .lock-icon,
+        .hero-img-container:hover .lock-icon {
+            opacity: 1;
         }
 
         .sidebar h3 {
@@ -250,7 +261,7 @@
             margin-bottom: 25px;
         }
 
-        /* ===== PHOTO DE PROFIL DANS LA SECTION HERO ===== */
+        /* ===== PHOTO HERO PROTÉGÉE ===== */
         .hero-img-container {
             position: relative;
             width: 150px;
@@ -272,20 +283,6 @@
             filter: brightness(0.7);
         }
 
-        .hero-img-container:hover::after {
-            content: '\f030';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            pointer-events: none;
-        }
-
         .hero-buttons {
             display: flex;
             gap: 15px;
@@ -294,6 +291,131 @@
         /* ===== INPUT FILE CACHÉ ===== */
         #fileInput {
             display: none;
+        }
+
+        /* ===== MODAL DE MOT DE PASSE ===== */
+        .photo-password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-password-modal.active {
+            display: flex;
+        }
+
+        .password-content {
+            background: #1a1a2a;
+            border: 3px solid #ff6b00;
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            animation: modalPop 0.3s;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .password-content i {
+            font-size: 4rem;
+            color: #ff6b00;
+            margin-bottom: 20px;
+        }
+
+        .password-content h3 {
+            color: #ff6b00;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .password-content p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 25px;
+            background: #0f0f1a;
+            border: 2px solid #ff6b00;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .password-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        }
+
+        .password-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .password-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .password-btn.primary {
+            background: #ff6b00;
+            color: white;
+        }
+
+        .password-btn.primary:hover {
+            background: #e05a00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+        }
+
+        .password-btn.secondary {
+            background: #2a2a3a;
+            color: white;
+        }
+
+        .password-btn.secondary:hover {
+            background: #3a3a4a;
+            transform: translateY(-2px);
+        }
+
+        .password-error {
+            color: #f44336;
+            margin-top: 20px;
+            display: none;
+            font-size: 1rem;
+        }
+
+        .password-error.show {
+            display: block;
         }
 
         /* ===== COMPÉTENCES ===== */
@@ -404,7 +526,6 @@
             border: 1px solid #ff6b00;
         }
 
-        /* ===== BOUTONS DE PROJET ===== */
         .project-buttons {
             display: flex;
             gap: 10px;
@@ -448,7 +569,7 @@
             margin-right: 5px;
         }
 
-        /* ===== CONTACT ===== */
+        /* ===== CONTACT - WHATSAPP ===== */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -695,13 +816,34 @@
     </style>
 </head>
 <body>
+    <!-- MODAL DE MOT DE PASSE -->
+    <div class="photo-password-modal" id="photoPasswordModal">
+        <div class="password-content">
+            <i class="fas fa-lock"></i>
+            <h3>Photo protégée</h3>
+            <p>Entrez le mot de passe pour modifier la photo de profil</p>
+            <input type="password" class="password-input" id="photoPassword" placeholder="Mot de passe" onkeypress="if(event.key==='Enter') checkPhotoPassword()">
+            <div class="password-buttons">
+                <button class="password-btn primary" onclick="checkPhotoPassword()">
+                    <i class="fas fa-check"></i> Valider
+                </button>
+                <button class="password-btn secondary" onclick="closePasswordModal()">
+                    <i class="fas fa-times"></i> Annuler
+                </button>
+            </div>
+            <div class="password-error" id="passwordError">
+                <i class="fas fa-exclamation-circle"></i> Mot de passe incorrect
+            </div>
+        </div>
+    </div>
+
     <button class="sidebar-toggle" id="sidebarToggle">
         <i class="fas fa-bars"></i>
     </button>
     
     <div class="overlay" id="overlay"></div>
 
-    <!-- Input file caché pour la sélection d'image -->
+    <!-- Input file caché -->
     <input type="file" id="fileInput" accept="image/*" />
 
     <!-- Notification -->
@@ -709,56 +851,41 @@
         <i class="fas fa-check-circle"></i> Photo de profil mise à jour !
     </div>
 
-
     <div class="app-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <!-- ===== 1. PHOTO DANS LA SIDEBAR (CLIQUABLE) ===== -->
-                <div class="profile-img-container" onclick="document.getElementById('fileInput').click()">
+                <!-- PHOTO SIDEBAR PROTÉGÉE -->
+                <div class="profile-img-container" onclick="openPasswordModal()">
                     <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=120&length=2&background=ff6b00&color=fff&bold=true" 
                          alt="Loukoumane" 
                          class="sidebar-profile-img" 
                          id="sidebarProfileImg" />
+                    <div class="lock-icon"><i class="fas fa-lock"></i></div>
                 </div>
-
                 <h3>Loukoumane Poma</h3>
                 <div class="sidebar-title">Développeur Web & Mobile</div>
             </div>
 
             <div class="sidebar-menu">
                 <a href="#hero" class="sidebar-menu-item active">
-                    <i class="fas fa-home"></i>
-                    <span>Accueil</span>
+                    <i class="fas fa-home"></i> <span>Accueil</span>
                 </a>
                 <a href="#projects" class="sidebar-menu-item">
-                    <i class="fas fa-code"></i>
-                    <span>Projets</span>
+                    <i class="fas fa-code"></i> <span>Projets</span>
                 </a>
                 <a href="#about" class="sidebar-menu-item">
-                    <i class="fas fa-user"></i>
-                    <span>À propos</span>
+                    <i class="fas fa-user"></i> <span>À propos</span>
                 </a>
                 <a href="#skills" class="sidebar-menu-item">
-                    <i class="fas fa-cogs"></i>
-                    <span>Compétences</span>
+                    <i class="fas fa-cogs"></i> <span>Compétences</span>
                 </a>
                 <a href="#contact" class="sidebar-menu-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact</span>
+                    <i class="fas fa-envelope"></i> <span>Contact</span>
                 </a>
                 <a href="projects.html" class="sidebar-menu-item">
-                    <i class="fas fa-folder-open"></i>
-                    <span>Tous les projets</span>
+                    <i class="fas fa-folder-open"></i> <span>Tous les projets</span>
                 </a>
-
-                <a href="#diplomes.html" class="sidebar-menu-item">
-                    <i class="fas fa-folder-open"></i>
-                    <span>mes diplomes</span>
-                </a>
-
-
-
             </div>
 
             <div class="sidebar-social">
@@ -769,7 +896,6 @@
                     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-
 
             <div class="sidebar-footer">
                 <p>© 2026 Loukoumane</p>
@@ -795,16 +921,16 @@
                 <button class="toast-close" onclick="closeToast()">×</button>
             </div>
 
-
             <!-- Hero Section -->
             <section id="hero" class="section hero reveal">
                 <div class="container">
-                    <!-- ===== 2. PHOTO DANS LA SECTION HERO (CLIQUABLE) ===== -->
-                    <div class="hero-img-container" onclick="document.getElementById('fileInput').click()">
+                    <!-- PHOTO HERO PROTÉGÉE -->
+                    <div class="hero-img-container" onclick="openPasswordModal()">
                         <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=150&length=2&background=ff6b00&color=fff&bold=true" 
                              alt="Loukoumane" 
                              class="profile-img" 
                              id="heroProfileImg" />
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
                     </div>
                     <h1>Loukoumane Poma</h1>
                     <h2>Développeur Web & Mobile</h2>
@@ -816,8 +942,7 @@
                 </div>
             </section>
 
-
-            <!-- Projets Section -->
+            <!-- PROJETS Section -->
             <section id="projects" class="section projects reveal">
                 <div class="container">
                     <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Mes Projets</h2>
@@ -827,8 +952,6 @@
                             <div class="project-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format" alt="E-commerce" class="project-img" />
                             </div>
-
-
                             <div class="project-content">
                                 <h3>Boutique en ligne - Produits locaux</h3>
                                 <p>Site e-commerce pour la vente de produits ivoiriens avec panier, filtres et intégration paiement mobile.</p>
@@ -838,10 +961,8 @@
                                     <span>JavaScript</span>
                                     <span>Bootstrap</span>
                                 </div>
-
-
                                 <div class="project-buttons">
-                                    <a href="http://localhost/bureau_forum/utilisateurs/enregistrement" target="_blank" class="project-btn live">
+                                    <a href="https://demo-boutique.vercel.app" target="_blank" class="project-btn live">
                                         <i class="fas fa-external-link-alt"></i> Voir le projet
                                     </a>
                                     <a href="https://github.com/ton-pseudo/boutique-locale" target="_blank" class="project-btn github">
@@ -851,13 +972,11 @@
                             </div>
                         </div>
 
-
                         <!-- Projet 2 -->
                         <div class="project-card">
                             <div class="project-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format" alt="Todo App" class="project-img" />
                             </div>
-
                             <div class="project-content">
                                 <h3>Application de gestion de tâches</h3>
                                 <p>Todo list moderne avec catégories, priorités, mode sombre/clair et sauvegarde locale.</p>
@@ -867,7 +986,6 @@
                                     <span>JavaScript</span>
                                     <span>LocalStorage</span>
                                 </div>
-
                                 <div class="project-buttons">
                                     <a href="https://todo-loukoumane.netlify.app" target="_blank" class="project-btn live">
                                         <i class="fas fa-external-link-alt"></i> Voir le projet
@@ -884,7 +1002,6 @@
                             <div class="project-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=500&auto=format" alt="Calculatrice" class="project-img" />
                             </div>
-
                             <div class="project-content">
                                 <h3>Calculatrice scientifique web</h3>
                                 <p>Calculatrice avec historique, fonctions trigonométriques, mode degré/radian et thème personnalisable.</p>
@@ -894,12 +1011,10 @@
                                     <span>JavaScript</span>
                                     <span>Math.js</span>
                                 </div>
-
                                 <div class="project-buttons">
                                     <a href="https://calculatrice-demo.github.io" target="_blank" class="project-btn live">
                                         <i class="fas fa-external-link-alt"></i> Voir le projet
                                     </a>
-
                                     <a href="https://github.com/ton-pseudo/calculatrice-scientifique" target="_blank" class="project-btn github">
                                         <i class="fab fa-github"></i> GitHub
                                     </a>
@@ -912,17 +1027,15 @@
                             <div class="project-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&auto=format" alt="Portfolio" class="project-img" />
                             </div>
-
                             <div class="project-content">
                                 <h3>Mon Portfolio Personnel</h3>
-                                <p>Ce site que vous consultez : responsive, animations CSS, changement de photo, bouton WhatsApp flottant.</p>
+                                <p>Ce site que vous consultez : responsive, animations CSS, changement de photo protégé, bouton WhatsApp.</p>
                                 <div class="stack">
                                     <span>HTML5</span>
                                     <span>CSS3</span>
                                     <span>JavaScript</span>
                                     <span>Font Awesome</span>
                                 </div>
-
                                 <div class="project-buttons">
                                     <a href="#" class="project-btn live" onclick="alert('Vous êtes déjà sur le projet !'); return false;">
                                         <i class="fas fa-external-link-alt"></i> Voir le projet
@@ -937,36 +1050,34 @@
                 </div>
             </section>
 
-
             <!-- À propos Section -->
             <section id="about" class="section about reveal">
                 <div class="container">
                     <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">À propos de moi</h2>
-                    <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 15px;">Passionné par le développement web depuis plusieurs années, j'aime créer des interfaces claires, performantes et accessibles. Basé à Bouaké, je m'intéresse particulièrement aux solutions adaptées aux réalités locales.</p>
+                    <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 15px;">Passionné par le développement web depuis plusieurs années, j'aime créer des interfaces claires, performantes et accessibles. Basé à Bouaké, je m'intéresse particulièrement aux solutions adaptées aux réalités locales (connexions variables, paiements mobiles, etc.).</p>
                     <p style="color: #94a3b8; font-size: 1.2rem;">Actuellement en quête de nouveaux défis et collaborations intéressantes !</p>
                 </div>
             </section>
 
-
-            <!-- Compétences Section -->
+            <!-- COMPÉTENCES Section -->
             <section id="skills" class="section skills reveal">
                 <div class="container">
                     <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Mes Compétences</h2>
                     <div class="skills-grid">
-                        <div class="skill"><i class="fab fa-html5"></i> HTML5 & CSS</div>
-                        <div class="skill"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="skill"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+                        <div class="skill"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
                         <div class="skill"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
                         <div class="skill"><i class="fab fa-git-alt"></i> Git & GitHub</div>
-                        <div class="skill"><i class="fab fa-node"></i> REACT NATIVE</div>
-                        <div class="skill"><i class="fas fa-database"></i> SQL</div>
+                        <div class="skill"><i class="fab fa-node"></i> Node.js / Express</div>
+                        <div class="skill"><i class="fas fa-database"></i> MongoDB</div>
                         <div class="skill"><i class="fas fa-code"></i> Développement Web</div>
                         <div class="skill"><i class="fas fa-mobile"></i> Développement Mobile</div>
+                        <div class="skill"><i class="fas fa-paint-brush"></i> Animations CSS</div>
                     </div>
                 </div>
             </section>
 
-
-            <!-- Contact Section -->
+            <!-- CONTACT Section avec WhatsApp -->
             <section id="contact" class="section contact reveal">
                 <div class="container">
                     <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Contactez-moi</h2>
@@ -988,7 +1099,6 @@
                                 <i class="fas fa-info-circle"></i> Le message s'ouvrira directement dans WhatsApp
                             </p>
                         </div>
-                        
 
                         <!-- Contact direct -->
                         <div class="contact-info-card">
@@ -1039,21 +1149,93 @@
     </a>
 
     <script>
-        // Toast de bienvenue
-        setTimeout(() => {
-            document.getElementById('welcomeToast').style.display = 'block';
-        }, 1000);
+        // ===== MOT DE PASSE POUR LA PHOTO =====
+        const PHOTO_PASSWORD = "loukoumane2026"; // 🔑 CHANGEZ CE MOT DE PASSE !
+        
+        function openPasswordModal() {
+            document.getElementById('photoPasswordModal').classList.add('active');
+            document.getElementById('photoPassword').value = '';
+            document.getElementById('passwordError').classList.remove('show');
+        }
+        
+        function closePasswordModal() {
+            document.getElementById('photoPasswordModal').classList.remove('active');
+        }
+        
+        function checkPhotoPassword() {
+            const enteredPassword = document.getElementById('photoPassword').value;
+            
+            if (enteredPassword === PHOTO_PASSWORD) {
+                closePasswordModal();
+                setTimeout(() => {
+                    document.getElementById('fileInput').click();
+                }, 300);
+            } else {
+                document.getElementById('passwordError').classList.add('show');
+                document.getElementById('photoPassword').value = '';
+            }
+        }
 
-        setTimeout(() => {
-            const toast = document.getElementById('welcomeToast');
-            if (toast) toast.style.display = 'none';
-        }, 5000);
+        // Fermer le modal avec Echap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('photoPasswordModal').classList.contains('active')) {
+                closePasswordModal();
+            }
+        });
 
+        // ===== CHANGEMENT DE PHOTO =====
+        const fileInput = document.getElementById('fileInput');
+        const sidebarImg = document.getElementById('sidebarProfileImg');
+        const heroImg = document.getElementById('heroProfileImg');
+        const notification = document.getElementById('notification');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            
+            if (file) {
+                if (!file.type.startsWith('image/')) {
+                    alert('Veuillez sélectionner une image');
+                    return;
+                }
+
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('L\'image est trop volumineuse (max 2MB)');
+                    return;
+                }
+
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    sidebarImg.src = e.target.result;
+                    heroImg.src = e.target.result;
+                    
+                    notification.style.display = 'block';
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 3000);
+
+                    localStorage.setItem('profilePhoto', e.target.result);
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Charger la photo sauvegardée
+        window.addEventListener('load', function() {
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                sidebarImg.src = savedPhoto;
+                heroImg.src = savedPhoto;
+            }
+        });
+
+        // ===== TOAST =====
         function closeToast() {
             document.getElementById('welcomeToast').style.display = 'none';
         }
 
-        // Sidebar toggle
+        // ===== SIDEBAR TOGGLE =====
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
@@ -1068,7 +1250,7 @@
             overlay.classList.remove('active');
         });
 
-        // Smooth scroll
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1083,7 +1265,7 @@
             });
         });
 
-        // Active menu
+        // ===== ACTIVE MENU =====
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
             const scrollY = window.scrollY;
@@ -1104,7 +1286,7 @@
             });
         });
 
-        // Reveal animation
+        // ===== REVEAL ANIMATION =====
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1115,7 +1297,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // FORMULAIRE WHATSAPP
+        // ===== FORMULAIRE WHATSAPP =====
         document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1161,59 +1343,15 @@
             }, 2000);
         });
 
-        // ===== FONCTIONNALITÉ DE CHANGEMENT DE PHOTO DE PROFIL =====
-        const fileInput = document.getElementById('fileInput');
-        const sidebarImg = document.getElementById('sidebarProfileImg');
-        const heroImg = document.getElementById('heroProfileImg');
-        const notification = document.getElementById('notification');
+        // ===== TOAST DE BIENVENUE =====
+        setTimeout(() => {
+            document.getElementById('welcomeToast').style.display = 'block';
+        }, 1000);
 
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            
-            if (file) {
-                // Vérifier que c'est bien une image
-                if (!file.type.startsWith('image/')) {
-                    alert('Veuillez sélectionner une image');
-                    return;
-                }
-
-                // Vérifier la taille (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('L\'image est trop volumineuse (max 2MB)');
-                    return;
-                }
-
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    // Mettre à jour les deux photos
-                    sidebarImg.src = e.target.result;
-                    heroImg.src = e.target.result;
-                    
-                    // Afficher la notification
-                    notification.style.display = 'block';
-                    
-                    // Cacher la notification après 3 secondes
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 3000);
-
-                    // Sauvegarder dans localStorage pour que la photo reste après rafraîchissement
-                    localStorage.setItem('profilePhoto', e.target.result);
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Charger la photo sauvegardée au chargement de la page
-        window.addEventListener('load', function() {
-            const savedPhoto = localStorage.getItem('profilePhoto');
-            if (savedPhoto) {
-                sidebarImg.src = savedPhoto;
-                heroImg.src = savedPhoto;
-            }
-        });
+        setTimeout(() => {
+            const toast = document.getElementById('welcomeToast');
+            if (toast) toast.style.display = 'none';
+        }, 5000);
     </script>
 </body>
 </html>
