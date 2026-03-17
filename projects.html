@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tous mes projets - Loukoumane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Mêmes styles que index.html pour la sidebar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2a 100%);
+            border-right: 1px solid rgba(255, 107, 0, 0.2);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .sidebar-profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff6b00;
+            margin-bottom: 15px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.2rem;
+            color: #ff6b00;
+        }
+
+        .sidebar-menu-item {
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu-item i {
+            width: 20px;
+            color: #ff6b00;
+        }
+
+        .sidebar-menu-item:hover,
+        .sidebar-menu-item.active {
+            background: rgba(255, 107, 0, 0.1);
+            border-left-color: #ff6b00;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 20px 40px;
+        }
+
+        .navbar {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            color: #ff6b00;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn.primary {
+            background: #ff6b00;
+            color: #ffffff;
+        }
+
+        .btn.secondary {
+            border: 2px solid #ff6b00;
+            color: #ffffff;
+        }
+
+        .projects-header {
+            margin-bottom: 30px;
+        }
+
+        .projects-header h1 {
+            font-size: 2.5rem;
+            color: #ff6b00;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+        }
+
+        .project-img-wrapper {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+
+        .stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .stack span {
+            background: rgba(255, 107, 0, 0.2);
+            color: #ff6b00;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px 0;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            background: transparent;
+            color: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .page-btn.active,
+        .page-btn:hover {
+            background: #ff6b00;
+            border-color: #ff6b00;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a2a;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid #ff6b00;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #ff6b00;
+        }
+
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: #ff6b00;
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .sidebar-toggle {
+                display: block;
+            }
+            
+            .overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="IMG-20250113-WA0025.jpg" alt="Loukoumane" class="sidebar-profile-img" />
+                <h3>Loukoumane Poma</h3>
+            </div>
+
+            <div class="sidebar-menu">
+                <a href="index.html#hero" class="sidebar-menu-item">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="index.html#projects" class="sidebar-menu-item">
+                    <i class="fas fa-code"></i>
+                    <span>Projets</span>
+                </a>
+                <a href="index.html#about" class="sidebar-menu-item">
+                    <i class="fas fa-user"></i>
+                    <span>À propos</span>
+                </a>
+                <a href="index.html#skills" class="sidebar-menu-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>Compétences</span>
+                </a>
+                <a href="index.html#contact" class="sidebar-menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+                <a href="projects.html" class="sidebar-menu-item active">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Tous les projets</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <nav class="navbar">
+                <div class="container">
+                    <h1 class="page-title">Tous mes projets</h1>
+                    <a href="index.html" class="btn secondary">← Retour</a>
+                </div>
+            </nav>
+
+            <section class="projects-header">
+                <h1>Mes réalisations</h1>
+                <p>Découvrez l'ensemble de mes projets de développement</p>
+            </section>
+
+            <div class="project-grid" id="projectGrid"></div>
+            <div class="pagination" id="pagination"></div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+            <div id="modalStack" class="stack"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Données des projets
+        const projects = [
+            {
+                id: 1,
+                title: "Boutique en ligne – Produits locaux",
+                description: "Site e-commerce pour la vente de produits ivoiriens avec panier, filtre et intégration paiement mobile.",
+                image: "images/projet-ecommerce.png",
+                stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+                liveLink: "https://demo-boutique.vercel.app",
+                githubLink: "https://github.com/ton-pseudo/boutique-locale"
+            },
+            {
+                id: 2,
+                title: "Application de gestion de tâches",
+                description: "Todo list moderne avec catégories, priorité, mode sombre/clair et sauvegarde locale.",
+                image: "images/projet-todo.png",
+                stack: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+                liveLink: "https://todo-loukoumane.netlify.app",
+                githubLink: "https://github.com/ton-pseudo/todo-app-js"
+            },
+            {
+                id: 3,
+                title: "Calculatrice scientifique web",
+                description: "Calculatrice avec historique, fonctions trigonométriques, mode degré/radian et thème personnalisable.",
+                image: "images/projet-calculatrice.png",
+                stack: ["HTML5", "CSS Grid", "JavaScript"],
+                liveLink: "https://calculatrice-demo.github.io",
+                githubLink: "https://github.com/ton-pseudo/calculatrice-scientifique"
+            },
+            {
+                id: 4,
+                title: "Mon Portfolio Personnel",
+                description: "Site responsive avec animations CSS, dark mode, bouton WhatsApp flottant.",
+                image: "images/projet-portfolio.png",
+                stack: ["HTML5", "CSS3", "JavaScript"],
+                liveLink: "#",
+                githubLink: "https://github.com/ton-pseudo/portfolio-html-css"
+            }
+        ];
+
+        // Pagination
+        const itemsPerPage = 6;
+        let currentPage = 1;
+
+        const projectGrid = document.getElementById('projectGrid');
+        const paginationDiv = document.getElementById('pagination');
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalStack = document.getElementById('modalStack');
+        const closeModal = document.getElementById('closeModal');
+
+        function displayProjects() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedProjects = projects.slice(start, end);
+            
+            let html = '';
+            paginatedProjects.forEach(project => {
+                html += `
+                    <div class="project-card" onclick="openModal(${project.id})">
+                        <div class="project-img-wrapper">
+                            <img src="${project.image}" alt="${project.title}" class="project-img">
+                        </div>
+                        <div class="project-content">
+                            <h3>${project.title}</h3>
+                            <p>${project.description.substring(0, 100)}...</p>
+                            <div class="stack">
+                                ${project.stack.map(tech => `<span>${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            projectGrid.innerHTML = html;
+            displayPagination();
+        }
+
+        function displayPagination() {
+            const pageCount = Math.ceil(projects.length / itemsPerPage);
+            let html = '';
+            
+            for (let i = 1; i <= pageCount; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+            
+            paginationDiv.innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            displayProjects();
+        }
+
+        function openModal(id) {
+            const project = projects.find(p => p.id === id);
+            modalTitle.textContent = project.title;
+            modalDescription.textContent = project.description;
+            modalStack.innerHTML = project.stack.map(tech => `<span>${tech}</span>`).join('');
+            modal.classList.add('show');
+        }
+
+        closeModal.onclick = () => {
+            modal.classList.remove('show');
+        };
+
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', displayProjects);
+    </script>
+</body>
+</html>
