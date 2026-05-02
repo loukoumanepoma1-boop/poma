@@ -1,10 +1,9 @@
- // https://demo-boutique.vercel.app
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Loukoumane - Développeur Web à Bouaké</title>
+    <title>Loukoumane - Développeur FULL STACK junior à Bouaké</title>
     <meta name="description" content="Développeur web full-stack basé à Bouaké. Création d'applications web modernes et performantes."/>
     
     <!-- Fonts & Icons -->
@@ -14,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===== RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -28,13 +26,12 @@
             line-height: 1.6;
         }
 
-        /* Layout avec sidebar */
         .app-wrapper {
             display: flex;
             min-height: 100vh;
         }
 
-        /* ===== SIDEBAR ===== */
+        /* SIDEBAR */
         .sidebar {
             width: 280px;
             background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2a 100%);
@@ -50,10 +47,8 @@
             padding: 30px 20px;
             text-align: center;
             border-bottom: 2px solid #ff6b00;
-            position: relative;
         }
 
-        /* ===== PHOTO DE PROFIL PROTÉGÉE ===== */
         .profile-img-container {
             position: relative;
             width: 120px;
@@ -68,11 +63,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff6b00;
-            transition: 0.3s;
-        }
-
-        .profile-img-container:hover .sidebar-profile-img {
-            filter: brightness(0.7);
         }
 
         .lock-icon {
@@ -91,7 +81,6 @@
             border: 2px solid white;
             opacity: 0;
             transition: 0.3s;
-            pointer-events: none;
         }
 
         .profile-img-container:hover .lock-icon,
@@ -101,7 +90,6 @@
 
         .sidebar h3 {
             font-size: 1.4rem;
-            margin-bottom: 5px;
             color: #ff6b00;
         }
 
@@ -123,7 +111,6 @@
 
         .sidebar-menu-item i {
             width: 20px;
-            font-size: 1.2rem;
             color: #ff6b00;
         }
 
@@ -140,12 +127,6 @@
             margin-top: 20px;
         }
 
-        .sidebar-social h4 {
-            color: #ffffff;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
         .social-icons {
             display: flex;
             gap: 15px;
@@ -154,7 +135,6 @@
         .social-icons a {
             color: #ffffff;
             font-size: 1.3rem;
-            transition: 0.3s;
         }
 
         .social-icons a:hover {
@@ -169,14 +149,12 @@
             text-align: center;
         }
 
-        /* ===== MAIN CONTENT ===== */
         .main-content {
             flex: 1;
             margin-left: 280px;
             padding: 20px 40px;
         }
 
-        /* ===== NAVBAR ===== */
         .navbar {
             background: #1a1a2a;
             border: 2px solid #ff6b00;
@@ -196,7 +174,6 @@
             color: #ff6b00;
         }
 
-        /* ===== BOUTONS ===== */
         .btn {
             padding: 12px 25px;
             border-radius: 5px;
@@ -216,7 +193,6 @@
         .btn.primary:hover {
             background: #e05a00;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
         }
 
         .btn.secondary {
@@ -230,7 +206,6 @@
             color: #ffffff;
         }
 
-        /* ===== SECTIONS ===== */
         .section {
             background: #1a1a2a;
             border: 2px solid #ff6b00;
@@ -246,23 +221,18 @@
         .hero h1 {
             font-size: 2.8rem;
             color: #ff6b00;
-            margin-bottom: 10px;
         }
 
         .hero h2 {
             font-size: 2rem;
             color: #ffffff;
-            margin-bottom: 15px;
         }
 
         .hero p {
             color: #94a3b8;
-            font-size: 1.1rem;
             max-width: 600px;
-            margin-bottom: 25px;
         }
 
-        /* ===== PHOTO HERO PROTÉGÉE ===== */
         .hero-img-container {
             position: relative;
             width: 150px;
@@ -277,11 +247,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff6b00;
-            transition: 0.3s;
-        }
-
-        .hero-img-container:hover .profile-img {
-            filter: brightness(0.7);
         }
 
         .hero-buttons {
@@ -289,12 +254,11 @@
             gap: 15px;
         }
 
-        /* ===== INPUT FILE CACHÉ ===== */
-        #fileInput {
+        #fileInput, #certificatFileInput {
             display: none;
         }
 
-        /* ===== MODAL DE MOT DE PASSE ===== */
+        /* MODALS */
         .photo-password-modal {
             display: none;
             position: fixed;
@@ -321,36 +285,6 @@
             max-width: 450px;
             width: 90%;
             text-align: center;
-            animation: modalPop 0.3s;
-        }
-
-        @keyframes modalPop {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .password-content i {
-            font-size: 4rem;
-            color: #ff6b00;
-            margin-bottom: 20px;
-        }
-
-        .password-content h3 {
-            color: #ff6b00;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .password-content p {
-            color: #94a3b8;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
         .password-input {
@@ -365,11 +299,6 @@
             text-align: center;
         }
 
-        .password-input:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
-        }
-
         .password-buttons {
             display: flex;
             gap: 15px;
@@ -382,7 +311,6 @@
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
             font-size: 1.1rem;
             flex: 1;
         }
@@ -392,34 +320,18 @@
             color: white;
         }
 
-        .password-btn.primary:hover {
-            background: #e05a00;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
-        }
-
         .password-btn.secondary {
             background: #2a2a3a;
             color: white;
-        }
-
-        .password-btn.secondary:hover {
-            background: #3a3a4a;
-            transform: translateY(-2px);
         }
 
         .password-error {
             color: #f44336;
             margin-top: 20px;
             display: none;
-            font-size: 1rem;
         }
 
-        .password-error.show {
-            display: block;
-        }
-
-        /* ===== COMPÉTENCES ===== */
+        /* COMPÉTENCES */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -434,17 +346,12 @@
             padding: 20px 15px;
             text-align: center;
             font-weight: 600;
-            font-size: 1.1rem;
-            color: #ffffff;
             transition: 0.3s;
-            cursor: default;
         }
 
         .skill:hover {
             transform: translateY(-5px);
             background: #ff6b00;
-            color: #ffffff;
-            border-color: #ffffff;
         }
 
         .skill i {
@@ -458,10 +365,10 @@
             color: #ffffff;
         }
 
-        /* ===== PROJETS ===== */
+        /* PROJETS */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -471,9 +378,6 @@
             border: 2px solid #ff6b00;
             border-radius: 10px;
             overflow: hidden;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
         }
 
         .project-card:hover {
@@ -494,28 +398,17 @@
 
         .project-content {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .project-content h3 {
             color: #ff6b00;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .project-content p {
-            color: #94a3b8;
-            margin-bottom: 15px;
-            flex-grow: 1;
         }
 
         .stack {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px;
+            margin: 15px 0;
         }
 
         .stack span {
@@ -530,7 +423,6 @@
         .project-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
         }
 
         .project-btn {
@@ -540,7 +432,6 @@
             border-radius: 5px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
             text-align: center;
             text-decoration: none;
             font-size: 0.9rem;
@@ -551,26 +442,226 @@
             color: white;
         }
 
-        .project-btn.live:hover {
-            background: #e05a00;
-            transform: translateY(-2px);
-        }
-
         .project-btn.github {
             background: #24292e;
             color: white;
         }
 
-        .project-btn.github:hover {
-            background: #2f363d;
-            transform: translateY(-2px);
+        /* CERTIFICATS */
+        .certificats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .certificat-card {
+            background: #0f0f1a;
+            border: 2px solid #ff6b00;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        
+        .certificat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+        
+        .certificat-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #1a1a2a;
+            cursor: pointer;
+        }
+        
+        .certificat-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        
+        .certificat-img-wrapper:hover .certificat-img {
+            transform: scale(1.05);
+        }
+        
+        .certificat-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .certificat-img-wrapper:hover .certificat-img-overlay {
+            opacity: 1;
+        }
+        
+        .certificat-img-overlay i {
+            font-size: 2.5rem;
+            color: #ff6b00;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 50%;
+        }
+        
+        .certificat-content {
+            padding: 20px;
+        }
+        
+        .certificat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .certificat-titre {
+            color: #ff6b00;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .certificat-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        .certificat-organisme {
+            color: #94a3b8;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .certificat-organisme i {
+            color: #ff6b00;
+        }
+        
+        .certificat-date {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .certificat-date i {
+            color: #ff6b00;
+        }
+        
+        .certificat-numero {
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 5px;
+            padding: 6px;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+        
+        .certificat-description {
+            color: #ffffff;
+            margin: 10px 0;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        
+        .certificat-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-certificat {
+            flex: 1;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid #ff6b00;
+            border-radius: 5px;
+            color: #ff6b00;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-certificat:hover {
+            background: #ff6b00;
+            color: white;
         }
 
-        .project-btn i {
-            margin-right: 5px;
+        .certificat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .certificat-modal.active {
+            display: flex;
+        }
+        
+        .certificat-modal-content {
+            background: #1a1a2a;
+            border: 2px solid #ff6b00;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .certificat-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        
+        .certificat-modal-close:hover {
+            color: #ff6b00;
+        }
+        
+        .certificat-modal-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ff6b00;
         }
 
-        /* ===== CONTACT - WHATSAPP ===== */
+        /* CONTACT */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -578,7 +669,7 @@
             margin-top: 30px;
         }
 
-        .contact-form {
+        .contact-form, .contact-info-card {
             background: #0f0f1a;
             padding: 30px;
             border-radius: 10px;
@@ -586,10 +677,6 @@
         }
 
         .contact-info-card {
-            background: #0f0f1a;
-            padding: 30px;
-            border-radius: 10px;
-            border: 2px solid #ff6b00;
             text-align: center;
         }
 
@@ -604,12 +691,6 @@
             font-family: inherit;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #ff6b00;
-            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
-        }
-
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
@@ -620,18 +701,6 @@
             border-radius: 5px;
             text-decoration: none;
             margin: 15px 0;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-icon {
-            width: 24px;
-            height: 24px;
         }
 
         .whatsapp-float {
@@ -646,49 +715,20 @@
             align-items: center;
             justify-content: center;
             z-index: 999;
-            transition: 0.3s;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .whatsapp-float img {
-            width: 35px;
-            height: 35px;
-        }
-
-        /* ===== TOAST ===== */
         .welcome-toast {
             position: fixed;
             top: 20px;
             right: 20px;
-            max-width: 380px;
             background: #1a1a2a;
-            color: #ffffff;
-            padding: 20px 25px;
+            border: 2px solid #ff6b00;
+            padding: 20px;
             border-radius: 10px;
             z-index: 2000;
-            border: 2px solid #ff6b00;
             display: none;
         }
 
-        .toast-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        .toast-close:hover {
-            color: #ff6b00;
-        }
-
-        /* ===== NOTIFICATION ===== */
         .notification {
             position: fixed;
             bottom: 100px;
@@ -699,21 +739,8 @@
             border-radius: 5px;
             z-index: 2000;
             display: none;
-            animation: slideIn 0.3s;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* ===== MOBILE ===== */
         .sidebar-toggle {
             display: none;
             position: fixed;
@@ -727,7 +754,6 @@
             height: 45px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
         }
 
         .overlay {
@@ -749,20 +775,16 @@
             .sidebar {
                 transform: translateX(-100%);
             }
-            
             .sidebar.active {
                 transform: translateX(0);
             }
-            
             .main-content {
                 margin-left: 0;
                 padding: 20px;
             }
-            
             .sidebar-toggle {
                 display: block;
             }
-
             .contact-container {
                 grid-template-columns: 1fr;
             }
@@ -772,17 +794,11 @@
             .hero-buttons {
                 flex-direction: column;
             }
-            
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .section {
                 padding: 25px;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
             }
         }
 
@@ -802,558 +818,498 @@
             border-radius: 5px;
             margin-top: 15px;
             text-align: center;
-            font-weight: 500;
         }
-
-        .success {
-            background: #25D366;
-            color: white;
-        }
-
-        .error {
-            background: #f44336;
-            color: white;
-        }
+        .success { background: #25D366; color: white; }
+        .error { background: #f44336; color: white; }
     </style>
 </head>
 <body>
-    <!-- MODAL DE MOT DE PASSE -->
-    <div class="photo-password-modal" id="photoPasswordModal">
-        <div class="password-content">
-            <i class="fas fa-lock"></i>
-            <h3>Photo protégée</h3>
-            <p>Entrez le mot de passe pour modifier la photo de profil</p>
-            <input type="password" class="password-input" id="photoPassword" placeholder="Mot de passe" onkeypress="if(event.key==='Enter') checkPhotoPassword()">
-            <div class="password-buttons">
-                <button class="password-btn primary" onclick="checkPhotoPassword()">
-                    <i class="fas fa-check"></i> Valider
-                </button>
-                <button class="password-btn secondary" onclick="closePasswordModal()">
-                    <i class="fas fa-times"></i> Annuler
-                </button>
-            </div>
-            <div class="password-error" id="passwordError">
-                <i class="fas fa-exclamation-circle"></i> Mot de passe incorrect
-            </div>
+
+<!-- MODALS -->
+<div class="photo-password-modal" id="photoPasswordModal">
+    <div class="password-content">
+        <i class="fas fa-lock"></i>
+        <h3>Photo protégée</h3>
+        <p>Entrez le mot de passe pour modifier la photo de profil</p>
+        <input type="password" class="password-input" id="photoPassword" placeholder="Mot de passe">
+        <div class="password-buttons">
+            <button class="password-btn primary" onclick="checkPhotoPassword()">Valider</button>
+            <button class="password-btn secondary" onclick="closePasswordModal()">Annuler</button>
+        </div>
+        <div class="password-error" id="passwordError">Mot de passe incorrect</div>
+    </div>
+</div>
+
+<div class="photo-password-modal" id="certificatPasswordModal">
+    <div class="password-content">
+        <i class="fas fa-lock"></i>
+        <h3>Modification du certificat</h3>
+        <p>Entrez le mot de passe pour modifier la photo</p>
+        <input type="password" class="password-input" id="certificatPassword" placeholder="Mot de passe">
+        <div class="password-buttons">
+            <button class="password-btn primary" onclick="checkCertificatPassword()">Valider</button>
+            <button class="password-btn secondary" onclick="closeCertificatPasswordModal()">Annuler</button>
+        </div>
+        <div class="password-error" id="certificatPasswordError">Mot de passe incorrect</div>
+    </div>
+</div>
+
+<div class="certificat-modal" id="certificatModal">
+    <div class="certificat-modal-content">
+        <span class="certificat-modal-close" onclick="closeCertificatModal()">&times;</span>
+        <img src="" alt="Certificat" class="certificat-modal-img" id="modalCertificatImage">
+        <h3 style="color: #ff6b00; margin-bottom: 15px;" id="modalCertificatTitle"></h3>
+        <p id="modalCertificatDescription"></p>
+        <div style="margin-top: 15px;">
+            <p><i class="fas fa-building" style="color: #ff6b00;"></i> <strong>Organisme:</strong> <span id="modalCertificatOrganisme"></span></p>
+            <p><i class="fas fa-calendar-alt" style="color: #ff6b00;"></i> <strong>Date:</strong> <span id="modalCertificatDate"></span></p>
+            <p><i class="fas fa-id-card" style="color: #ff6b00;"></i> <strong>N°:</strong> <span id="modalCertificatNumero"></span></p>
         </div>
     </div>
+</div>
 
-    <button class="sidebar-toggle" id="sidebarToggle">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <div class="overlay" id="overlay"></div>
+<!-- INPUTS -->
+<input type="file" id="fileInput" accept="image/*" />
+<input type="file" id="certificatFileInput" accept="image/*" />
 
-    <!-- Input file caché -->
-    <input type="file" id="fileInput" accept="image/*" />
+<button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+<div class="notification" id="notification"><i class="fas fa-check-circle"></i> Photo mise à jour !</div>
 
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i> Photo de profil mise à jour !
-    </div>
+<div class="app-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-img-container" onclick="openPasswordModal()">
+                <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=120&length=2&background=ff6b00&color=fff&bold=true" class="sidebar-profile-img" id="sidebarProfileImg" />
+                <div class="lock-icon"><i class="fas fa-lock"></i></div>
+            </div>
+            <h3>Loukoumane Poma</h3>
+            <div class="sidebar-title">Développeur Web & Mobile</div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#hero" class="sidebar-menu-item active"><i class="fas fa-home"></i> Accueil</a>
+            <a href="#projects" class="sidebar-menu-item"><i class="fas fa-code"></i> Projets</a>
+            <a href="#about" class="sidebar-menu-item"><i class="fas fa-user"></i> À propos</a>
+            <a href="#skills" class="sidebar-menu-item"><i class="fas fa-cogs"></i> Compétences</a>
+            <a href="#certificats" class="sidebar-menu-item"><i class="fas fa-certificate"></i> Certificats</a>
+            <a href="#contact" class="sidebar-menu-item"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="sidebar-social">
+            <h4>Retrouvez-moi</h4>
+            <div class="social-icons">
+                <a href="https://github.com/loukoumanepoma1-boop"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <p>© 2026 Loukoumane</p>
+            <p>Bouaké, Côte d'Ivoire</p>
+        </div>
+    </aside>
 
-    <div class="app-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <!-- PHOTO SIDEBAR PROTÉGÉE -->
-                <div class="profile-img-container" onclick="openPasswordModal()">
-                    <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=120&length=2&background=ff6b00&color=fff&bold=true" 
-                         alt="Loukoumane" 
-                         class="sidebar-profile-img" 
-                         id="sidebarProfileImg" />
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="page-title">Mon Portfolio</h1>
+                <a href="#" class="btn primary" onclick="alert('Tous mes projets sont ci-dessous !')">Voir projets</a>
+            </div>
+        </nav>
+
+        <div class="welcome-toast" id="welcomeToast">
+            <p>👋 Bienvenue sur mon portfolio !</p>
+            <button onclick="closeToast()" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:1.5rem;">×</button>
+        </div>
+
+        <!-- HERO -->
+        <section id="hero" class="section hero reveal">
+            <div class="container">
+                <div class="hero-img-container" onclick="openPasswordModal()">
+                    <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=150&length=2&background=ff6b00&color=fff&bold=true" class="profile-img" id="heroProfileImg" />
                     <div class="lock-icon"><i class="fas fa-lock"></i></div>
                 </div>
-                <h3>Loukoumane Poma</h3>
-                <div class="sidebar-title">Développeur Web & Mobile</div>
-            </div>
-
-            <div class="sidebar-menu">
-                <a href="#hero" class="sidebar-menu-item active">
-                    <i class="fas fa-home"></i> <span>Accueil</span>
-                </a>
-                <a href="#projects" class="sidebar-menu-item">
-                    <i class="fas fa-code"></i> <span>Projets</span>
-                </a>
-                <a href="#about" class="sidebar-menu-item">
-                    <i class="fas fa-user"></i> <span>À propos</span>
-                </a>
-                <a href="#skills" class="sidebar-menu-item">
-                    <i class="fas fa-cogs"></i> <span>Compétences</span>
-                </a>
-                <a href="#contact" class="sidebar-menu-item">
-                    <i class="fas fa-envelope"></i> <span>Contact</span>
-                </a>
-                <a href="projects.html" class="sidebar-menu-item">
-                    <i class="fas fa-folder-open"></i> <span>Tous les projets</span>
-                </a>
-            </div>
-
-            <div class="sidebar-social">
-                <h4>Retrouvez-moi sur</h4>
-                <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <h1>Loukoumane Poma</h1>
+                <h2>Développeur Web & Mobile</h2>
+                <p>Basé à Bouaké, Côte d'Ivoire — Je construis des applications modernes adaptées au marché africain.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary">Voir mes projets</a>
+                    <a href="#contact" class="btn secondary">Me contacter</a>
                 </div>
             </div>
+        </section>
 
-            <div class="sidebar-footer">
-                <p>© 2026 Loukoumane</p>
-                <p>Bouaké, Côte d'Ivoire</p>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <nav class="navbar">
-                <div class="container">
-                    <h1 class="page-title">Mon Portfolio</h1>
-                    <a href="projects.html" class="btn primary">Voir tous les projets</a>
-                </div>
-            </nav>
-
-            <!-- Toast de bienvenue -->
-            <div class="welcome-toast" id="welcomeToast">
-                <div class="toast-content">
-                    <p style="font-size: 1.2rem; margin-bottom: 5px;">👋 Bienvenue !</p>
-                    <p style="color: #94a3b8;">Explorez mes projets et contactez-moi</p>
-                </div>
-                <button class="toast-close" onclick="closeToast()">×</button>
-            </div>
-
-            <!-- Hero Section -->
-            <section id="hero" class="section hero reveal">
-                <div class="container">
-                    <!-- PHOTO HERO PROTÉGÉE -->
-                    <div class="hero-img-container" onclick="openPasswordModal()">
-                        <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=150&length=2&background=ff6b00&color=fff&bold=true" 
-                             alt="Loukoumane" 
-                             class="profile-img" 
-                             id="heroProfileImg" />
-                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+        <!-- PROJETS -->
+        <section id="projects" class="section projects reveal">
+            <div class="container">
+                <h2 style="color:#ff6b00">Mes Projets</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500" class="project-img"></div>
+                        <div class="project-content">
+                            <h3>Plateforme Forum Développeurs</h3>
+                            <p>Gestion du forum national des développeurs avec inscriptions aux formations.</p>
+                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
+                            <div class="project-buttons"><a href="http://localhost/bureau_forum" class="project-btn live">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                        </div>
                     </div>
-                    <h1>Loukoumane Poma</h1>
-                    <h2>Développeur Web & Mobile</h2>
-                    <p>Basé à Bouaké, Côte d'Ivoire — Je construis des applications web modernes, rapides et adaptées au marché africain.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn primary">Voir mes projets</a>
-                        <a href="#contact" class="btn secondary">Me contacter</a>
+                    <div class="project-card">
+                        <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500" class="project-img"></div>
+                        <div class="project-content">
+                            <h3>Gestion d'école</h3>
+                            <p>Gestion des notes, bulletins et suivi des élèves.</p>
+                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
+                            <div class="project-buttons"><a href="http://localhost/gestion_ecole" class="project-btn live">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- PROJETS Section -->
-            <section id="projects" class="section projects reveal">
-                <div class="container">
-                    <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Mes Projets</h2>
-                    <div class="project-grid">
-                        <!-- Projet 1 -->
-                        <div class="project-card">
-                            <div class="project-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format" alt="E-commerce" class="project-img" />
-                            </div>
-                            <div class="project-content">
-                                <h3>Plateforme du forum national des developpeurs</h3>
-                                <p>cette plateforme permet de suivre les activités du forum national des developeurs, elle permet egalement de se connecter ou de s'inscrire et egalement de voir les formations disponibles avec possiblité de s'inscrire a une formation.</p>
-                                <div class="stack">
-                                    <span>HTML5</span>
-                                    <span>CSS3</span>
-                                    <span>JavaScript</span>
-                                    <span>Bootstrap</span>
-                                </div>
-
-                                <div class="project-buttons">
-                                    <a href="http://localhost/bureau_forum/utilisateurs/enregistrement" target="_blank" class="project-btn live">
-                                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                                    </a>
-                                    <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">
-                                        <i class="fab fa-github"></i> GitHub
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="project-card">
+                        <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=500" class="project-img"></div>
+                        <div class="project-content">
+                            <h3>Gestion Commerciale</h3>
+                            <p>Gestion des ventes, clients et fournisseurs.</p>
+                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
+                            <div class="project-buttons"><a href="http://localhost/gestion_commercial" class="project-btn live">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
                         </div>
-
-                        <!-- Projet 2 -->
-                        <div class="project-card">
-                            <div class="project-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format" alt="Todo App" class="project-img" />
-                            </div>
-                            <div class="project-content">
-                                <h3>Application de gestion ecole</h3>
-                                <p>cette application permet de gerer la scolarité,les notes, les bulletins et permet egalement aux parents de suivres leurs enfants en temps reel.</p>
-                                <div class="stack">
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>LocalStorage</span>
-                                </div>
-                                <div class="project-buttons">
-                                    <a href="http://localhost/gestion_ecole/search/utilisateur/connexion" target="_blank" class="project-btn live">
-                                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                                    </a>
-                                    <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">
-                                        <i class="fab fa-github"></i> GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Projet 3 -->
-                        <div class="project-card">
-                            <div class="project-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=500&auto=format" alt="Calculatrice" class="project-img" />
-                            </div>
-                            <div class="project-content">
-                                <h3>Application web de gestion_commercial</h3>
-                                <p>cette application faciite la vente et permet aux entreprise d'eviter les pertes unitiles, elle permet egalement de gerer tout le personnel de l'entreprise et aussi les clients ainsi que les fournisseurs.</p>
-                                <div class="stack">
-                                    <span>HTML5</span>
-                                    <span>CSS Grid</span>
-                                    <span>JavaScript</span>
-                                    <span>Math.js</span>
-                                </div>
-                                <div class="project-buttons">
-                                    <a href="http://localhost/gestion_commercial_forum/utilisateurs/enregistrement" target="_blank" class="project-btn live">
-                                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                                    </a>
-                                    <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">
-                                        <i class="fab fa-github"></i> GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Projet 4 -->
-                        <div class="project-card">
-                            <div class="project-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&auto=format" alt="Portfolio" class="project-img" />
-                            </div>
-                            <div class="project-content">
-                                <h3>Mon Portfolio Personnel</h3>
-                                <p>Ce site que vous consultez : responsive, animations CSS, changement de photo protégé, bouton WhatsApp.</p>
-                                <div class="stack">
-                                    <span>HTML5</span>
-                                    <span>CSS3</span>
-                                    <span>JavaScript</span>
-                                    <span>Font Awesome</span>
-                                </div>
-                                <div class="project-buttons">
-                                    <a href="#" class="project-btn live" onclick="alert('Vous êtes déjà sur le projet !'); return false;">
-                                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                                    </a>
-                                    <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">
-                                        <i class="fab fa-github"></i> GitHub
-                                    </a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500" class="project-img"></div>
+                        <div class="project-content">
+                            <h3>Portfolio Personnel</h3>
+                            <p>Site responsive avec certificats et WhatsApp.</p>
+                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
+                            <div class="project-buttons"><a href="#" class="project-btn live" onclick="alert('Vous êtes déjà sur le site !')">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- À propos Section -->
-            <section id="about" class="section about reveal">
-                <div class="container">
-                    <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">À propos de moi</h2>
-                    <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 15px;">Passionné par le développement web depuis plusieurs années, j'aime créer des interfaces claires, performantes et accessibles. Basé à Bouaké, je m'intéresse particulièrement aux solutions adaptées aux réalités locales (connexions variables, paiements mobiles, etc.).</p>
-                    <p style="color: #94a3b8; font-size: 1.2rem;">Actuellement en quête de nouveaux défis et collaborations intéressantes !</p>
+        <!-- À PROPOS -->
+        <section id="about" class="section about reveal">
+            <div class="container">
+                <h2 style="color:#ff6b00">À propos de moi</h2>
+                <p style="color:#94a3b8">Passionné par le développement web, je crée des applications modernes adaptées au marché africain. Basé à Bouaké, je suis toujours à la recherche de nouveaux défis !</p>
+            </div>
+        </section>
+
+        <!-- COMPÉTENCES -->
+        <section id="skills" class="section skills reveal">
+            <div class="container">
+                <h2 style="color:#ff6b00">Mes Compétences</h2>
+                <div class="skills-grid">
+                    <div class="skill"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+                    <div class="skill"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="skill"><i class="fab fa-php"></i> PHP</div>
+                    <div class="skill"><i class="fas fa-database"></i> MySQL</div>
+                    <div class="skill"><i class="fas fa-mobile-alt"></i> Responsive</div>
+                    <div class="skill"><i class="fab fa-git-alt"></i> Git & GitHub</div>
+                    <div class="skill"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="skill"><i class="fas fa-code"></i> Web Dev</div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- COMPÉTENCES Section -->
-            <section id="skills" class="section skills reveal">
-                <div class="container">
-                    <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Mes Compétences</h2>
-                    <div class="skills-grid">
-                        <div class="skill"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
-                        <div class="skill"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
-                        <div class="skill"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
-                        <div class="skill"><i class="fab fa-git-alt"></i> Git & GitHub</div>
-                        <div class="skill"><i class="fab fa-node"></i> Node.js / Express</div>
-                        <div class="skill"><i class="fas fa-database"></i> MongoDB</div>
-                        <div class="skill"><i class="fas fa-code"></i> Développement Web</div>
-                        <div class="skill"><i class="fas fa-mobile"></i> Développement Mobile</div>
-                        <div class="skill"><i class="fas fa-paint-brush"></i> Animations CSS</div>
+        <!-- CERTIFICATS -->
+        <section id="certificats" class="section certificats reveal">
+            <div class="container">
+                <h2 style="color:#ff6b00"><i class="fas fa-certificate"></i> Mes Certificats</h2>
+                <p style="color:#94a3b8; margin-bottom:20px;">Cliquez sur l'icône 🔒 pour ajouter/modifier la photo (protégé)</p>
+                <div class="certificats-grid" id="certificatsGrid"></div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section contact reveal">
+            <div class="container">
+                <h2 style="color:#ff6b00">Contactez-moi</h2>
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form id="whatsappForm">
+                            <input type="text" id="name" placeholder="Votre nom" required>
+                            <input type="email" id="email" placeholder="Votre email" required>
+                            <textarea id="message" placeholder="Votre message..." rows="5" required></textarea>
+                            <button type="submit" class="btn primary" style="width:100%"><i class="fab fa-whatsapp"></i> Envoyer</button>
+                        </form>
+                        <div id="formStatus"></div>
+                    </div>
+                    <div class="contact-info-card">
+                        <h3 style="color:#ff6b00">Contact direct</h3>
+                        <a href="https://wa.me/2250709621296" class="whatsapp-btn">WhatsApp direct</a>
+                        <p><i class="fas fa-envelope"></i> loukoumanepoma1@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +225 07 09 62 12 96</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Bouaké, Côte d'Ivoire</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+    </main>
+</div>
 
-            <!-- CONTACT Section avec WhatsApp -->
-            <section id="contact" class="section contact reveal">
-                <div class="container">
-                    <h2 style="color: #ff6b00; margin-bottom: 20px; font-size: 2.2rem;">Contactez-moi</h2>
-                    
-                    <div class="contact-container">
-                        <!-- Formulaire WhatsApp -->
-                        <div class="contact-form">
-                            <h3 style="color: #ff6b00; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                            <form id="whatsappForm">
-                                <input type="text" id="name" placeholder="Votre nom" required>
-                                <input type="email" id="email" placeholder="Votre email" required>
-                                <textarea id="message" placeholder="Votre message..." rows="5" required></textarea>
-                                <button type="submit" class="btn primary" style="width: 100%;" id="whatsappBtn">
-                                    <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
-                                </button>
-                            </form>
-                            <div id="formStatus"></div>
-                            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px; text-align: center;">
-                                <i class="fas fa-info-circle"></i> Le message s'ouvrira directement dans WhatsApp
-                            </p>
-                        </div>
+<a href="https://wa.me/2250709621296" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
+</a>
 
-                        <!-- Contact direct -->
-                        <div class="contact-info-card">
-                            <h3 style="color: #ff6b00; margin-bottom: 20px;">Contact direct</h3>
-                            
-                            <a href="https://wa.me/2250709621296?text=Bonjour%20Loukoumane%2C%20je%20souhaite%20discuter%20d%27un%20projet" 
-                               class="whatsapp-btn" 
-                               target="_blank">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
-                                WhatsApp direct
-                            </a>
-                            
-                            <div style="margin: 20px 0; padding: 15px; background: #1a1a2a; border-radius: 5px;">
-                                <p style="margin: 10px 0; color: #94a3b8;">
-                                    <i class="fas fa-envelope" style="color: #ff6b00; width: 25px;"></i> 
-                                    <strong style="color: #ffffff;">loukoumanepoma1@gmail.com</strong>
-                                </p>
-                                <p style="margin: 10px 0; color: #94a3b8;">
-                                    <i class="fas fa-phone-alt" style="color: #ff6b00; width: 25px;"></i> 
-                                    <strong style="color: #ffffff;">+225 07 09 62 12 96</strong>
-                                </p>
-                                <p style="margin: 10px 0; color: #94a3b8;">
-                                    <i class="fas fa-map-marker-alt" style="color: #ff6b00; width: 25px;"></i> 
-                                    <strong style="color: #ffffff;">Bouaké, Côte d'Ivoire</strong>
-                                </p>
-                            </div>
+<script>
+    const PHOTO_PASSWORD = "loukoumane2026";
+    let currentCertificatId = null;
 
-                            <div style="margin-top: 20px;">
-                                <p style="color: #94a3b8; margin-bottom: 10px;">Suivez-moi :</p>
-                                <div style="display: flex; gap: 20px; justify-content: center;">
-                                    <a href="#" style="color: #ffffff; font-size: 1.8rem;"><i class="fab fa-github"></i></a>
-                                    <a href="#" style="color: #ffffff; font-size: 1.8rem;"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" style="color: #ffffff; font-size: 1.8rem;"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/2250709621296?text=Bonjour%20Loukoumane%2C%20je%20souhaite%20discuter%20d%27un%20projet" 
-       class="whatsapp-float" 
-       target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
-
-    <script>
-        // ===== MOT DE PASSE POUR LA PHOTO =====
-        const PHOTO_PASSWORD = "loukoumane2026"; // 🔑 CHANGEZ CE MOT DE PASSE !
-        
-        function openPasswordModal() {
-            document.getElementById('photoPasswordModal').classList.add('active');
-            document.getElementById('photoPassword').value = '';
-            document.getElementById('passwordError').classList.remove('show');
+    // ===== PHOTO PROFIL =====
+    function openPasswordModal() {
+        document.getElementById('photoPasswordModal').classList.add('active');
+    }
+    function closePasswordModal() {
+        document.getElementById('photoPasswordModal').classList.remove('active');
+    }
+    function checkPhotoPassword() {
+        if (document.getElementById('photoPassword').value === PHOTO_PASSWORD) {
+            closePasswordModal();
+            document.getElementById('fileInput').click();
+        } else {
+            document.getElementById('passwordError').classList.add('show');
         }
-        
-        function closePasswordModal() {
-            document.getElementById('photoPasswordModal').classList.remove('active');
+    }
+
+    // ===== CERTIFICAT PHOTO =====
+    function openCertificatPasswordModal(id) {
+        currentCertificatId = id;
+        document.getElementById('certificatPasswordModal').classList.add('active');
+    }
+    function closeCertificatPasswordModal() {
+        document.getElementById('certificatPasswordModal').classList.remove('active');
+    }
+    function checkCertificatPassword() {
+        if (document.getElementById('certificatPassword').value === PHOTO_PASSWORD) {
+            closeCertificatPasswordModal();
+            document.getElementById('certificatFileInput').click();
+        } else {
+            document.getElementById('certificatPasswordError').classList.add('show');
         }
+    }
+
+    // ===== CERTIFICATS DATA =====
+    let certificatsData = [
+        { id: 1, nom_certificat: "Développement Web Full Stack", description: "Certification complète HTML, CSS, JavaScript, Node.js, React.", date_obtention: "2025-01-15", organisme_delivreur: "MANDIGO", numero_certificat: "CERT-FS-2025-001", statut: "Valide", photo: "" },
+
+
+        { id: 2, nom_certificat: "JavaScript Avancé ES6+", description: "Maîtrise des concepts avancés JavaScript et API REST.", date_obtention: "2024-11-20", organisme_delivreur: "Udemy", numero_certificat: "JS-ADV-2024-892", statut: "Valide", photo: "" },
+
+
+        { id: 3, nom_certificat: "PHP & MySQL Professionnel", description: "Développement d'applications avec PHP objet et MySQL.", date_obtention: "2024-09-10", organisme_delivreur: "Simplon", numero_certificat: "PHP-MYSQL-2024-456", statut: "Valide", photo: "" },
+
+
+        { id: 4, nom_certificat: "React Native - Mobile", description: "Applications mobiles cross-platform avec React Native.", date_obtention: "2025-02-28", organisme_delivreur: "MANDIGO", numero_certificat: "RN-2025-123", statut: "Valide", photo: "" },
+
         
-        function checkPhotoPassword() {
-            const enteredPassword = document.getElementById('photoPassword').value;
+        { id: 5, nom_certificat: "UI/UX Design", description: "Conception d'interfaces utilisateur et expérience utilisateur.", date_obtention: "2024-12-05", organisme_delivreur: "Google", numero_certificat: "UIUX-2024-789", statut: "Valide", photo: "" }
+    ];
+
+    // CHARGER LES PHOTOS SAUVEGARDÉES
+    function loadSavedPhotos() {
+        for (let i = 1; i <= certificatsData.length; i++) {
+            const saved = localStorage.getItem(`certif_${i}`);
+            if (saved) {
+                const cert = certificatsData.find(c => c.id === i);
+                if (cert) cert.photo = saved;
+            }
+        }
+    }
+
+    // AFFICHER LES CERTIFICATS
+    function afficherCertificats() {
+        const grid = document.getElementById('certificatsGrid');
+        let html = '';
+        
+        certificatsData.forEach(cert => {
+            const dateFormatee = new Date(cert.date_obtention).toLocaleDateString('fr-FR');
+            const photoHtml = cert.photo ? 
+                `<img src="${cert.photo}" class="certificat-img">` :
+                `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1a2a;">
+                    <i class="fas fa-certificate" style="font-size:3rem;color:#ff6b00;opacity:0.5;"></i>
+                    <p style="color:#ff6b00;font-size:0.8rem;margin-top:10px;">Cliquez pour ajouter</p>
+                 </div>`;
             
-            if (enteredPassword === PHOTO_PASSWORD) {
-                closePasswordModal();
-                setTimeout(() => {
-                    document.getElementById('fileInput').click();
-                }, 300);
-            } else {
-                document.getElementById('passwordError').classList.add('show');
-                document.getElementById('photoPassword').value = '';
-            }
+            html += `
+                <div class="certificat-card">
+                    <div class="certificat-img-wrapper" onclick="openCertificatPasswordModal(${cert.id})">
+                        ${photoHtml}
+                        <div class="certificat-img-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <div class="certificat-content">
+                        <div class="certificat-header">
+                            <span class="certificat-titre">${cert.nom_certificat}</span>
+                            <span class="certificat-badge">${cert.statut}</span>
+                        </div>
+                        <div class="certificat-organisme"><i class="fas fa-building"></i> ${cert.organisme_delivreur}</div>
+                        <div class="certificat-date"><i class="fas fa-calendar-alt"></i> Obtenu le ${dateFormatee}</div>
+                        <div class="certificat-description">${cert.description.substring(0, 100)}${cert.description.length > 100 ? '...' : ''}</div>
+                        <div class="certificat-numero"><i class="fas fa-id-card"></i> N°: ${cert.numero_certificat}</div>
+                        <div class="certificat-actions">
+                            <button class="btn-certificat" onclick="showCertificatDetails(${cert.id})"><i class="fas fa-eye"></i> Détails</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        grid.innerHTML = html;
+    }
+
+    function showCertificatDetails(id) {
+        const cert = certificatsData.find(c => c.id === id);
+        if (cert) {
+            document.getElementById('modalCertificatImage').src = cert.photo || '';
+            document.getElementById('modalCertificatTitle').textContent = cert.nom_certificat;
+            document.getElementById('modalCertificatDescription').textContent = cert.description;
+            document.getElementById('modalCertificatOrganisme').textContent = cert.organisme_delivreur;
+            document.getElementById('modalCertificatDate').textContent = new Date(cert.date_obtention).toLocaleDateString('fr-FR');
+            document.getElementById('modalCertificatNumero').textContent = cert.numero_certificat;
+            document.getElementById('certificatModal').classList.add('active');
         }
+    }
+    
+    function closeCertificatModal() {
+        document.getElementById('certificatModal').classList.remove('active');
+    }
 
-        // Fermer le modal avec Echap
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('photoPasswordModal').classList.contains('active')) {
-                closePasswordModal();
-            }
-        });
-
-        // ===== CHANGEMENT DE PHOTO =====
-        const fileInput = document.getElementById('fileInput');
-        const sidebarImg = document.getElementById('sidebarProfileImg');
-        const heroImg = document.getElementById('heroProfileImg');
-        const notification = document.getElementById('notification');
-
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            
-            if (file) {
-                if (!file.type.startsWith('image/')) {
-                    alert('Veuillez sélectionner une image');
-                    return;
-                }
-
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('L\'image est trop volumineuse (max 2MB)');
-                    return;
-                }
-
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    sidebarImg.src = e.target.result;
-                    heroImg.src = e.target.result;
-                    
-                    notification.style.display = 'block';
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 3000);
-
-                    localStorage.setItem('profilePhoto', e.target.result);
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Charger la photo sauvegardée
-        window.addEventListener('load', function() {
-            const savedPhoto = localStorage.getItem('profilePhoto');
-            if (savedPhoto) {
-                sidebarImg.src = savedPhoto;
-                heroImg.src = savedPhoto;
-            }
-        });
-
-        // ===== TOAST =====
-        function closeToast() {
-            document.getElementById('welcomeToast').style.display = 'none';
+    // UPLOAD PHOTO CERTIFICAT
+    const certificatInput = document.getElementById('certificatFileInput');
+    certificatInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024 && currentCertificatId) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const photoData = ev.target.result;
+                // Sauvegarder dans localStorage
+                localStorage.setItem(`certif_${currentCertificatId}`, photoData);
+                // Mettre à jour les données
+                const cert = certificatsData.find(c => c.id === currentCertificatId);
+                if (cert) cert.photo = photoData;
+                // Recharger l'affichage
+                afficherCertificats();
+                // Notification
+                const notif = document.getElementById('notification');
+                notif.style.display = 'block';
+                setTimeout(() => notif.style.display = 'none', 3000);
+                currentCertificatId = null;
+            };
+            reader.readAsDataURL(file);
+        } else if (file && file.size > 2*1024*1024) {
+            alert('Image trop volumineuse (max 2MB)');
         }
+    });
 
-        // ===== SIDEBAR TOGGLE =====
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
+    // UPLOAD PHOTO PROFIL
+    const profileInput = document.getElementById('fileInput');
+    const sidebarImg = document.getElementById('sidebarProfileImg');
+    const heroImg = document.getElementById('heroProfileImg');
+    
+    profileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const photoData = ev.target.result;
+                sidebarImg.src = photoData;
+                heroImg.src = photoData;
+                localStorage.setItem('profilePhoto', photoData);
+                const notif = document.getElementById('notification');
+                notif.style.display = 'block';
+                setTimeout(() => notif.style.display = 'none', 3000);
+            };
+            reader.readAsDataURL(file);
+        } else if (file && file.size > 2*1024*1024) {
+            alert('Image trop volumineuse (max 2MB)');
+        }
+    });
 
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
+    // CHARGEMENT INITIAL
+    const savedProfilePhoto = localStorage.getItem('profilePhoto');
+    if (savedProfilePhoto) {
+        sidebarImg.src = savedProfilePhoto;
+        heroImg.src = savedProfilePhoto;
+    }
+    
+    loadSavedPhotos();
+    afficherCertificats();
 
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
+    // TOAST
+    function closeToast() {
+        document.getElementById('welcomeToast').style.display = 'none';
+    }
+    setTimeout(() => {
+        const toast = document.getElementById('welcomeToast');
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 5000);
+    }, 1000);
 
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    if (window.innerWidth <= 992) {
-                        sidebar.classList.remove('active');
-                        overlay.classList.remove('active');
-                    }
-                }
-            });
-        });
+    // SIDEBAR TOGGLE
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    toggleBtn.onclick = () => { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); };
+    overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
 
-        // ===== ACTIVE MENU =====
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.scrollY;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    document.querySelectorAll('.sidebar-menu-item').forEach(item => {
-                        item.classList.remove('active');
-                        if (item.getAttribute('href') === '#' + sectionId) {
-                            item.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-
-        // ===== REVEAL ANIMATION =====
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ===== FORMULAIRE WHATSAPP =====
-        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            const btn = document.getElementById('whatsappBtn');
-            const status = document.getElementById('formStatus');
-            const originalText = btn.innerHTML;
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                status.innerHTML = '<div class="status-message error">Veuillez remplir tous les champs</div>';
-                return;
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (window.innerWidth <= 992) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
             }
-            
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation...';
-            btn.disabled = true;
-            
-            const phoneNumber = '2250709621296';
-            
-            const whatsappMessage = 
-                `👋 *Nouveau message depuis votre portfolio*%0A%0A` +
-                `*Nom:* ${name}%0A` +
-                `*Email:* ${email}%0A%0A` +
-                `*Message:*%0A${message}`;
-            
-            const whatsappLink = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-            
-            status.innerHTML = '<div class="status-message success">✓ Redirection vers WhatsApp...</div>';
-            
-            window.open(whatsappLink, '_blank');
-            
-            this.reset();
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                
-                setTimeout(() => {
-                    status.innerHTML = '';
-                }, 3000);
-            }, 2000);
         });
+    });
 
-        // ===== TOAST DE BIENVENUE =====
-        setTimeout(() => {
-            document.getElementById('welcomeToast').style.display = 'block';
-        }, 1000);
+    // ACTIVE MENU
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) current = section.getAttribute('id');
+        });
+        document.querySelectorAll('.sidebar-menu-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === '#' + current) item.classList.add('active');
+        });
+    });
 
-        setTimeout(() => {
-            const toast = document.getElementById('welcomeToast');
-            if (toast) toast.style.display = 'none';
-        }, 5000);
-    </script>
+    // REVEAL
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // WHATSAPP FORM
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        if (!name || !email || !message) {
+            document.getElementById('formStatus').innerHTML = '<div class="status-message error">Veuillez remplir tous les champs</div>';
+            return;
+        }
+        const msg = `👋 *Nouveau message*%0A%0A*Nom:* ${name}%0A*Email:* ${email}%0A%0A*Message:*%0A${message}`;
+        window.open(`https://wa.me/2250709621296?text=${msg}`, '_blank');
+        document.getElementById('formStatus').innerHTML = '<div class="status-message success">✓ Redirection WhatsApp...</div>';
+        this.reset();
+        setTimeout(() => document.getElementById('formStatus').innerHTML = '', 3000);
+    });
+
+    // FERMER MODALS AVEC ECHAP
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (document.getElementById('certificatModal').classList.contains('active')) closeCertificatModal();
+            if (document.getElementById('photoPasswordModal').classList.contains('active')) closePasswordModal();
+            if (document.getElementById('certificatPasswordModal').classList.contains('active')) closeCertificatPasswordModal();
+        }
+    });
+</script>
 </body>
 </html>
