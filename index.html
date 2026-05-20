@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
-
+/* ===== TOUS VOS STYLES EXISTANTS (gardez-les tels quels) ===== */
 :root{
     --bg:#07111f;
     --bg2:#0d1b2a;
@@ -59,7 +59,6 @@ a{
 }
 
 /* SIDEBAR */
-
 .sidebar{
     position:fixed;
     left:0;
@@ -131,7 +130,9 @@ a{
 }
 
 .sidebar-menu{
-    padding:15px 0;
+    display:flex;
+    flex-direction:column;
+    width:100%;
 }
 
 .sidebar-menu-item{
@@ -142,6 +143,7 @@ a{
     padding:15px 25px;
     transition:0.3s;
     border-left:4px solid transparent;
+    width:100%;
 }
 
 .sidebar-menu-item:hover,
@@ -191,7 +193,6 @@ a{
 }
 
 /* MAIN */
-
 .main-content{
     margin-left:280px;
     width:calc(100% - 280px);
@@ -199,7 +200,6 @@ a{
 }
 
 /* NAVBAR */
-
 .navbar{
     background:rgba(19,34,56,0.8);
     backdrop-filter:blur(10px);
@@ -258,7 +258,6 @@ a{
 }
 
 /* SECTIONS */
-
 .section{
     background:rgba(19,34,56,0.7);
     border:1px solid var(--border);
@@ -269,7 +268,6 @@ a{
 }
 
 /* HERO */
-
 .hero-container{
     display:flex;
     align-items:center;
@@ -322,7 +320,6 @@ a{
 }
 
 /* PROJECTS */
-
 .project-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -400,18 +397,28 @@ a{
     color:white;
     text-align:center;
     font-weight:600;
+    transition:0.3s;
 }
 
 .project-btn.live{
     background:var(--primary);
 }
 
+.project-btn.live:hover{
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+}
+
 .project-btn.github{
     background:#111827;
 }
 
-/* SKILLS */
+.project-btn.github:hover{
+    background:#1f2937;
+    transform:translateY(-2px);
+}
 
+/* SKILLS */
 .skills-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -440,7 +447,6 @@ a{
 }
 
 /* CERTIFICATS */
-
 .certificats-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -553,7 +559,6 @@ a{
 }
 
 /* CONTACT */
-
 .contact-container{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -600,6 +605,12 @@ textarea:focus{
     padding:15px 25px;
     border-radius:12px;
     margin:20px 0;
+    transition:0.3s;
+}
+
+.whatsapp-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(37,211,102,0.4);
 }
 
 .whatsapp-float{
@@ -615,10 +626,14 @@ textarea:focus{
     justify-content:center;
     box-shadow:0 10px 25px rgba(0,0,0,0.4);
     z-index:1000;
+    transition:0.3s;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1) rotate(5deg);
 }
 
 /* MODALS */
-
 .photo-password-modal,
 .certificat-modal{
     position:fixed;
@@ -701,7 +716,6 @@ textarea:focus{
 }
 
 /* TOAST */
-
 .notification,
 .welcome-toast{
     position:fixed;
@@ -725,7 +739,6 @@ textarea:focus{
 }
 
 /* RESPONSIVE */
-
 .sidebar-toggle{
     display:none;
     position:fixed;
@@ -754,69 +767,54 @@ textarea:focus{
 }
 
 @media(max-width:992px){
-
     .sidebar{
         transform:translateX(-100%);
     }
-
     .sidebar.active{
         transform:translateX(0);
     }
-
     .main-content{
         margin-left:0;
         width:100%;
         padding-top:90px;
     }
-
     .sidebar-toggle{
         display:block;
     }
-
     .hero-container{
         flex-direction:column-reverse;
         text-align:center;
     }
-
     .hero-buttons{
         justify-content:center;
     }
-
     .contact-container{
         grid-template-columns:1fr;
     }
 }
 
 @media(max-width:768px){
-
     .section{
         padding:25px;
     }
-
     .project-grid,
     .certificats-grid{
         grid-template-columns:1fr;
     }
-
     .navbar .container{
         flex-direction:column;
         align-items:flex-start;
     }
-
     .hero-buttons{
         flex-direction:column;
     }
-
     .hero-buttons .btn{
         width:100%;
     }
-
     .password-buttons{
         flex-direction:column;
     }
 }
-
-/* REVEAL */
 
 .reveal{
     opacity:0;
@@ -842,16 +840,9 @@ textarea:focus{
 .error{
     background:#ef4444;
 }
-
 </style>
 </head>
-
 <body>
-
-<!-- LE JAVASCRIPT QUE TU AS ENVOYÉ RESTE IDENTIQUE -->
-
-</body>
-</html>
 
 <!-- MODALS -->
 <div class="photo-password-modal" id="photoPasswordModal">
@@ -886,12 +877,12 @@ textarea:focus{
     <div class="certificat-modal-content">
         <span class="certificat-modal-close" onclick="closeCertificatModal()">&times;</span>
         <img src="" alt="Certificat" class="certificat-modal-img" id="modalCertificatImage">
-        <h3 style="color: #ff6b00; margin-bottom: 15px;" id="modalCertificatTitle"></h3>
+        <h3 style="color: #00b4ff; margin-bottom: 15px;" id="modalCertificatTitle"></h3>
         <p id="modalCertificatDescription"></p>
         <div style="margin-top: 15px;">
-            <p><i class="fas fa-building" style="color: #ff6b00;"></i> <strong>Organisme:</strong> <span id="modalCertificatOrganisme"></span></p>
-            <p><i class="fas fa-calendar-alt" style="color: #ff6b00;"></i> <strong>Date:</strong> <span id="modalCertificatDate"></span></p>
-            <p><i class="fas fa-id-card" style="color: #ff6b00;"></i> <strong>N°:</strong> <span id="modalCertificatNumero"></span></p>
+            <p><i class="fas fa-building" style="color: #00b4ff;"></i> <strong>Organisme:</strong> <span id="modalCertificatOrganisme"></span></p>
+            <p><i class="fas fa-calendar-alt" style="color: #00b4ff;"></i> <strong>Date:</strong> <span id="modalCertificatDate"></span></p>
+            <p><i class="fas fa-id-card" style="color: #00b4ff;"></i> <strong>N°:</strong> <span id="modalCertificatNumero"></span></p>
         </div>
     </div>
 </div>
@@ -909,12 +900,14 @@ textarea:focus{
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="profile-img-container" onclick="openPasswordModal()">
-                <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=120&length=2&background=ff6b00&color=fff&bold=true" class="sidebar-profile-img" id="sidebarProfileImg" />
+                <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=120&length=2&background=00b4ff&color=fff&bold=true&rounded=true"
+                     class="sidebar-profile-img" id="sidebarProfileImg" />
                 <div class="lock-icon"><i class="fas fa-lock"></i></div>
             </div>
             <h3>Loukoumane Poma</h3>
             <div class="sidebar-title">Développeur Web & Mobile</div>
         </div>
+
         <div class="sidebar-menu">
             <a href="#hero" class="sidebar-menu-item active"><i class="fas fa-home"></i> Accueil</a>
             <a href="#projects" class="sidebar-menu-item"><i class="fas fa-code"></i> Projets</a>
@@ -923,14 +916,16 @@ textarea:focus{
             <a href="#certificats" class="sidebar-menu-item"><i class="fas fa-certificate"></i> Certificats</a>
             <a href="#contact" class="sidebar-menu-item"><i class="fas fa-envelope"></i> Contact</a>
         </div>
+
         <div class="sidebar-social">
-            <h4>Retrouvez-moi</h4>
+            <h4>Suivez-moi</h4>
             <div class="social-icons">
-                <a href="https://github.com/loukoumanepoma1-boop"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/loukoumanepoma1-boop" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
+
         <div class="sidebar-footer">
             <p>© 2026 Loukoumane</p>
             <p>Bouaké, Côte d'Ivoire</p>
@@ -953,78 +948,89 @@ textarea:focus{
 
         <!-- HERO -->
         <section id="hero" class="section hero reveal">
-    <div class="container hero-container">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <h1>Loukoumane Poma</h1>
+                    <h2>Développeur Web & Mobile Full Stack</h2>
+                    <p>Basé à Bouaké, Côte d'Ivoire — Je construis des applications modernes adaptées au marché africain.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn primary">Voir mes projets</a>
+                        <a href="#contact" class="btn secondary">Me contacter</a>
+                    </div>
+                </div>
 
-        <div class="hero-text">
-            <h1>Loukoumane Poma</h1>
-            <h2>Développeur Web & Mobile Full Stack</h2>
-
-            <p>
-                Basé à Bouaké, Côte d'Ivoire — Je construis des applications modernes adaptées au marché africain.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#projects" class="btn primary">Voir mes projets</a>
-                <a href="#contact" class="btn secondary">Me contacter</a>
-            </div>
-        </div>
-
-        <div class="hero-image">
-            <div class="hero-img-container" onclick="openPasswordModal()">
-                <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=150&length=2&background=ff6b00&color=fff&bold=true"
-                     class="profile-img"
-                     id="heroProfileImg" />
-
-                <div class="lock-icon">
-                    <i class="fas fa-lock"></i>
+                <div class="hero-image">
+                    <div class="hero-img-container" onclick="openPasswordModal()">
+                        <img src="https://ui-avatars.com/api/?name=Loukoumane+Poma&size=150&length=2&background=00b4ff&color=fff&bold=true&rounded=true"
+                             class="profile-img" id="heroProfileImg" />
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-    </div>
-</section>
-
-        <!-- PROJETS -->
+        <!-- PROJETS - VERSION CORRIGÉE AVEC LIENS FONCTIONNELS -->
         <section id="projects" class="section projects reveal">
             <div class="container">
-                <h2 style="color:#ff6b00">Mes Projets</h2>
+                <h2 style="color:#00b4ff">Mes Projets</h2>
                 <div class="project-grid">
+                    
+                    <!-- Projet 1 - Forum Développeurs -->
                     <div class="project-card">
                         <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500" class="project-img"></div>
                         <div class="project-content">
                             <h3>Plateforme Forum Développeurs</h3>
                             <p>Gestion du forum national des développeurs avec inscriptions aux formations.</p>
                             <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
-                            <div class="project-buttons"><a href="soutra.pro" class="project-btn live">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                            <div class="project-buttons">
+                                <a href="https://soutra.pro/fnd_app/public" target="_blank" class="project-btn live">🌐 Voir le projet</a>
+                                <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">📁 GitHub</a>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Projet 2 - Gestion d'école -->
                     <div class="project-card">
                         <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500" class="project-img"></div>
                         <div class="project-content">
-                            <h3>Gestion d'école</h3>
-                            <p>Gestion des notes, bulletins et suivi des élèves.</p>
+                            <h3>Application de Gestion d'École</h3>
+                            <p>Gestion complète des notes, bulletins et suivi des élèves en temps réel.</p>
                             <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
-                            <div class="project-buttons"><a href="http://localhost/gestion_ecole" class="project-btn live">En cours de developpement</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                            <div class="project-buttons">
+                                <a href="http://localhost/gestion_ecole" target="_blank" class="project-btn live">🏫 En cours de conception</a>
+                                <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">📁 GitHub</a>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Projet 3 - Gestion Commerciale -->
                     <div class="project-card">
                         <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=500" class="project-img"></div>
                         <div class="project-content">
-                            <h3>Gestion Commerciale</h3>
-                            <p>Gestion des ventes, clients et fournisseurs.</p>
+                            <h3>Application de Gestion Commerciale</h3>
+                            <p>Solution complète pour la gestion des ventes, clients, fournisseurs et stocks.</p>
                             <div class="stack"><span>HTML5</span><span>CSS3</span><span>PHP</span><span>MySQL</span></div>
-                            <div class="project-buttons"><a href="http://localhost/gestion_commercial" class="project-btn live">Pas encore deployé</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                            <div class="project-buttons">
+                                <a href="http://localhost/gestion_commercial" target="_blank" class="project-btn live">💰 Pas encore hebergée</a>
+                                <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">📁 GitHub</a>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Projet 4 - Portfolio -->
                     <div class="project-card">
                         <div class="project-img-wrapper"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500" class="project-img"></div>
                         <div class="project-content">
-                            <h3>Portfolio Personnel</h3>
-                            <p>Site responsive avec certificats et WhatsApp.</p>
-                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
-                            <div class="project-buttons"><a href="#" class="project-btn live" onclick="alert('Vous êtes déjà sur le site !')">Voir</a><a href="https://github.com/loukoumanepoma1-boop" class="project-btn github">GitHub</a></div>
+                            <h3>Mon Portfolio Personnel</h3>
+                            <p>Site portfolio moderne avec animations, certificats et intégration WhatsApp.</p>
+                            <div class="stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>PHP</span></div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn live" onclick="alert('Vous êtes actuellement sur le portfolio !')">📁 Voir le projet</a>
+                                <a href="https://github.com/loukoumanepoma1-boop" target="_blank" class="project-btn github">📁 GitHub</a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -1032,15 +1038,15 @@ textarea:focus{
         <!-- À PROPOS -->
         <section id="about" class="section about reveal">
             <div class="container">
-                <h2 style="color:#ff6b00">À propos de moi</h2>
-                <p style="color:#94a3b8">Passionné par le développement web, je crée des applications modernes adaptées au marché africain. Basé à Bouaké, je suis toujours à la recherche de nouveaux défis !</p>
+                <h2 style="color:#00b4ff">À propos de moi</h2>
+                <p style="color:#9db2ce">Passionné par le développement web, je crée des applications modernes adaptées au marché africain. Basé à Bouaké, je suis toujours à la recherche de nouveaux défis !</p>
             </div>
         </section>
 
         <!-- COMPÉTENCES -->
         <section id="skills" class="section skills reveal">
             <div class="container">
-                <h2 style="color:#ff6b00">Mes Compétences</h2>
+                <h2 style="color:#00b4ff">Mes Compétences</h2>
                 <div class="skills-grid">
                     <div class="skill"><i class="fab fa-html5"></i> HTML & CSS</div>
                     <div class="skill"><i class="fab fa-js"></i> JavaScript</div>
@@ -1050,7 +1056,7 @@ textarea:focus{
                     <div class="skill"><i class="fab fa-git-alt"></i> Git & GitHub</div>
                     <div class="skill"><i class="fab fa-node"></i> Node.js</div>
                     <div class="skill"><i class="fas fa-code"></i> Web Dev</div>
-                    <div class="skill"><i class="fab fa-html5"></i> DEV MOBILE</div>
+                    <div class="skill"><i class="fab fa-android"></i> DEV MOBILE</div>
                 </div>
             </div>
         </section>
@@ -1058,8 +1064,8 @@ textarea:focus{
         <!-- CERTIFICATS -->
         <section id="certificats" class="section certificats reveal">
             <div class="container">
-                <h2 style="color:#ff6b00"><i class="fas fa-certificate"></i> Mes Certificats</h2>
-                <p style="color:#94a3b8; margin-bottom:20px;">Cliquez sur l'icône 🔒 pour ajouter/modifier la photo (protégé)</p>
+                <h2 style="color:#00b4ff"><i class="fas fa-certificate"></i> Mes Certificats</h2>
+                <p style="color:#9db2ce; margin-bottom:20px;">Cliquez sur l'icône 🔒 pour ajouter/modifier la photo (protégé)</p>
                 <div class="certificats-grid" id="certificatsGrid"></div>
             </div>
         </section>
@@ -1067,7 +1073,7 @@ textarea:focus{
         <!-- CONTACT -->
         <section id="contact" class="section contact reveal">
             <div class="container">
-                <h2 style="color:#ff6b00">Contactez-moi</h2>
+                <h2 style="color:#00b4ff">Contactez-moi</h2>
                 <div class="contact-container">
                     <div class="contact-form">
                         <form id="whatsappForm">
@@ -1079,8 +1085,8 @@ textarea:focus{
                         <div id="formStatus"></div>
                     </div>
                     <div class="contact-info-card">
-                        <h3 style="color:#ff6b00">Contact direct</h3>
-                        <a href="https://wa.me/2250709621296" class="whatsapp-btn">WhatsApp direct</a>
+                        <h3 style="color:#00b4ff">Contact direct</h3>
+                        <a href="https://wa.me/2250709621296" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp direct</a>
                         <p><i class="fas fa-envelope"></i> loukoumanepoma1@gmail.com</p>
                         <p><i class="fas fa-phone"></i> +225 07 09 62 12 96</p>
                         <p><i class="fas fa-map-marker-alt"></i> Bouaké, Côte d'Ivoire</p>
@@ -1099,13 +1105,17 @@ textarea:focus{
     const PHOTO_PASSWORD = "loukoumane2026";
     let currentCertificatId = null;
 
-    // ===== PHOTO PROFIL =====
+    // PHOTO PROFIL
     function openPasswordModal() {
         document.getElementById('photoPasswordModal').classList.add('active');
+        document.getElementById('photoPassword').value = '';
+        document.getElementById('passwordError').classList.remove('show');
     }
+    
     function closePasswordModal() {
         document.getElementById('photoPasswordModal').classList.remove('active');
     }
+    
     function checkPhotoPassword() {
         if (document.getElementById('photoPassword').value === PHOTO_PASSWORD) {
             closePasswordModal();
@@ -1115,14 +1125,19 @@ textarea:focus{
         }
     }
 
-    // ===== CERTIFICAT PHOTO =====
+    // CERTIFICAT PHOTO
     function openCertificatPasswordModal(id) {
         currentCertificatId = id;
         document.getElementById('certificatPasswordModal').classList.add('active');
+        document.getElementById('certificatPassword').value = '';
+        document.getElementById('certificatPasswordError').classList.remove('show');
     }
+    
     function closeCertificatPasswordModal() {
         document.getElementById('certificatPasswordModal').classList.remove('active');
+        currentCertificatId = null;
     }
+    
     function checkCertificatPassword() {
         if (document.getElementById('certificatPassword').value === PHOTO_PASSWORD) {
             closeCertificatPasswordModal();
@@ -1132,22 +1147,19 @@ textarea:focus{
         }
     }
 
-    // ===== CERTIFICATS DATA =====
+    // CERTIFICATS DATA
     let certificatsData = [
         { id: 1, nom_certificat: "Développement Web Full Stack", description: "Certification complète HTML, PHP, CSS, JavaScript, Node.js, React.", date_obtention: "2025-01-15", organisme_delivreur: "MANDIGO", numero_certificat: "CERT-FS-2025-001", statut: "Valide", photo: "" },
-
-
         { id: 2, nom_certificat: "JavaScript Avancé ES6+", description: "Maîtrise des concepts avancés JavaScript et API REST.", date_obtention: "2024-11-20", organisme_delivreur: "Udemy", numero_certificat: "JS-ADV-2024-892", statut: "Valide", photo: "" },
-
-
-        { id: 3, nom_certificat: "PHP & MySQL Professionnel", description: "Développement d'applications avec PHP objet et MySQL.", date_obtention: "2024-09-10", organisme_delivreur: "Simplon", numero_certificat: "PHP-MYSQL-2024-456", statut: "Valide", photo: "" },
-
-
-        
+        { id: 3, nom_certificat: "PHP & MySQL Professionnel", description: "Développement d'applications avec PHP objet et MySQL.", date_obtention: "2024-09-10", organisme_delivreur: "Simplon", numero_certificat: "PHP-MYSQL-2024-456", statut: "Valide", photo: "" }
     ];
 
-    // CHARGER LES PHOTOS SAUVEGARDÉES
     function loadSavedPhotos() {
+        const savedProfilePhoto = localStorage.getItem('profilePhoto');
+        if (savedProfilePhoto) {
+            document.getElementById('sidebarProfileImg').src = savedProfilePhoto;
+            document.getElementById('heroProfileImg').src = savedProfilePhoto;
+        }
         for (let i = 1; i <= certificatsData.length; i++) {
             const saved = localStorage.getItem(`certif_${i}`);
             if (saved) {
@@ -1157,20 +1169,18 @@ textarea:focus{
         }
     }
 
-    // AFFICHER LES CERTIFICATS
     function afficherCertificats() {
         const grid = document.getElementById('certificatsGrid');
+        if (!grid) return;
         let html = '';
-        
         certificatsData.forEach(cert => {
             const dateFormatee = new Date(cert.date_obtention).toLocaleDateString('fr-FR');
             const photoHtml = cert.photo ? 
                 `<img src="${cert.photo}" class="certificat-img">` :
-                `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1a2a;">
-                    <i class="fas fa-certificate" style="font-size:3rem;color:#ff6b00;opacity:0.5;"></i>
-                    <p style="color:#ff6b00;font-size:0.8rem;margin-top:10px;">Cliquez pour ajouter</p>
+                `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f172a;">
+                    <i class="fas fa-certificate" style="font-size:3rem;color:#00b4ff;opacity:0.5;"></i>
+                    <p style="color:#00b4ff;font-size:0.8rem;margin-top:10px;">Cliquez pour ajouter</p>
                  </div>`;
-            
             html += `
                 <div class="certificat-card">
                     <div class="certificat-img-wrapper" onclick="openCertificatPasswordModal(${cert.id})">
@@ -1193,7 +1203,6 @@ textarea:focus{
                 </div>
             `;
         });
-        
         grid.innerHTML = html;
     }
 
@@ -1214,83 +1223,81 @@ textarea:focus{
         document.getElementById('certificatModal').classList.remove('active');
     }
 
-    // UPLOAD PHOTO CERTIFICAT
+    // UPLOADS
     const certificatInput = document.getElementById('certificatFileInput');
-    certificatInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024 && currentCertificatId) {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                const photoData = ev.target.result;
-                // Sauvegarder dans localStorage
-                localStorage.setItem(`certif_${currentCertificatId}`, photoData);
-                // Mettre à jour les données
-                const cert = certificatsData.find(c => c.id === currentCertificatId);
-                if (cert) cert.photo = photoData;
-                // Recharger l'affichage
-                afficherCertificats();
-                // Notification
-                const notif = document.getElementById('notification');
-                notif.style.display = 'block';
-                setTimeout(() => notif.style.display = 'none', 3000);
-                currentCertificatId = null;
-            };
-            reader.readAsDataURL(file);
-        } else if (file && file.size > 2*1024*1024) {
-            alert('Image trop volumineuse (max 2MB)');
-        }
-    });
+    if (certificatInput) {
+        certificatInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024 && currentCertificatId) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const photoData = ev.target.result;
+                    localStorage.setItem(`certif_${currentCertificatId}`, photoData);
+                    const cert = certificatsData.find(c => c.id === currentCertificatId);
+                    if (cert) cert.photo = photoData;
+                    afficherCertificats();
+                    const notif = document.getElementById('notification');
+                    notif.style.display = 'block';
+                    setTimeout(() => notif.style.display = 'none', 3000);
+                    currentCertificatId = null;
+                };
+                reader.readAsDataURL(file);
+            } else if (file && file.size > 2*1024*1024) {
+                alert('Image trop volumineuse (max 2MB)');
+            }
+        });
+    }
 
-    // UPLOAD PHOTO PROFIL
     const profileInput = document.getElementById('fileInput');
     const sidebarImg = document.getElementById('sidebarProfileImg');
     const heroImg = document.getElementById('heroProfileImg');
     
-    profileInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024) {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                const photoData = ev.target.result;
-                sidebarImg.src = photoData;
-                heroImg.src = photoData;
-                localStorage.setItem('profilePhoto', photoData);
-                const notif = document.getElementById('notification');
-                notif.style.display = 'block';
-                setTimeout(() => notif.style.display = 'none', 3000);
-            };
-            reader.readAsDataURL(file);
-        } else if (file && file.size > 2*1024*1024) {
-            alert('Image trop volumineuse (max 2MB)');
-        }
-    });
-
-    // CHARGEMENT INITIAL
-    const savedProfilePhoto = localStorage.getItem('profilePhoto');
-    if (savedProfilePhoto) {
-        sidebarImg.src = savedProfilePhoto;
-        heroImg.src = savedProfilePhoto;
+    if (profileInput) {
+        profileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/') && file.size <= 2*1024*1024) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const photoData = ev.target.result;
+                    sidebarImg.src = photoData;
+                    heroImg.src = photoData;
+                    localStorage.setItem('profilePhoto', photoData);
+                    const notif = document.getElementById('notification');
+                    notif.style.display = 'block';
+                    setTimeout(() => notif.style.display = 'none', 3000);
+                };
+                reader.readAsDataURL(file);
+            } else if (file && file.size > 2*1024*1024) {
+                alert('Image trop volumineuse (max 2MB)');
+            }
+        });
     }
-    
+
+    // INITIALISATION
     loadSavedPhotos();
     afficherCertificats();
 
-    // TOAST
     function closeToast() {
         document.getElementById('welcomeToast').style.display = 'none';
     }
+    
     setTimeout(() => {
         const toast = document.getElementById('welcomeToast');
-        toast.style.display = 'block';
-        setTimeout(() => toast.style.display = 'none', 5000);
+        if (toast) {
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 5000);
+        }
     }, 1000);
 
     // SIDEBAR TOGGLE
     const toggleBtn = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
-    toggleBtn.onclick = () => { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); };
-    overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+    
+    if (toggleBtn && sidebar && overlay) {
+        toggleBtn.onclick = () => { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); };
+        overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+    }
 
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1299,9 +1306,9 @@ textarea:focus{
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
-                if (window.innerWidth <= 992) {
+                if (window.innerWidth <= 992 && sidebar) {
                     sidebar.classList.remove('active');
-                    overlay.classList.remove('active');
+                    if (overlay) overlay.classList.remove('active');
                 }
             }
         });
@@ -1328,28 +1335,34 @@ textarea:focus{
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // WHATSAPP FORM
-    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        if (!name || !email || !message) {
-            document.getElementById('formStatus').innerHTML = '<div class="status-message error">Veuillez remplir tous les champs</div>';
-            return;
-        }
-        const msg = `👋 *Nouveau message*%0A%0A*Nom:* ${name}%0A*Email:* ${email}%0A%0A*Message:*%0A${message}`;
-        window.open(`https://wa.me/2250709621296?text=${msg}`, '_blank');
-        document.getElementById('formStatus').innerHTML = '<div class="status-message success">✓ Redirection WhatsApp...</div>';
-        this.reset();
-        setTimeout(() => document.getElementById('formStatus').innerHTML = '', 3000);
-    });
+    const whatsappForm = document.getElementById('whatsappForm');
+    if (whatsappForm) {
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            if (!name || !email || !message) {
+                document.getElementById('formStatus').innerHTML = '<div class="status-message error">Veuillez remplir tous les champs</div>';
+                return;
+            }
+            const msg = `👋 *Nouveau message*%0A%0A*Nom:* ${name}%0A*Email:* ${email}%0A%0A*Message:*%0A${message}`;
+            window.open(`https://wa.me/2250709621296?text=${msg}`, '_blank');
+            document.getElementById('formStatus').innerHTML = '<div class="status-message success">✓ Redirection WhatsApp...</div>';
+            this.reset();
+            setTimeout(() => document.getElementById('formStatus').innerHTML = '', 3000);
+        });
+    }
 
     // FERMER MODALS AVEC ECHAP
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (document.getElementById('certificatModal').classList.contains('active')) closeCertificatModal();
-            if (document.getElementById('photoPasswordModal').classList.contains('active')) closePasswordModal();
-            if (document.getElementById('certificatPasswordModal').classList.contains('active')) closeCertificatPasswordModal();
+            const certifModal = document.getElementById('certificatModal');
+            const photoModal = document.getElementById('photoPasswordModal');
+            const certifPasswordModal = document.getElementById('certificatPasswordModal');
+            if (certifModal && certifModal.classList.contains('active')) closeCertificatModal();
+            if (photoModal && photoModal.classList.contains('active')) closePasswordModal();
+            if (certifPasswordModal && certifPasswordModal.classList.contains('active')) closeCertificatPasswordModal();
         }
     });
 </script>
